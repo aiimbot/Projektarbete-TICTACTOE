@@ -1,5 +1,6 @@
-public enum Mark {
-	NULL,
+public enum Mark 
+{
+	Null,
 	X,
 	O
 }
