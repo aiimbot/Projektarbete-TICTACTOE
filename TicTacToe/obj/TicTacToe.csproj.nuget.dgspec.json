@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/gustaf/Library/Mobile Documents/com~apple~CloudDocs/Utbildning/Informationssystem A - Objektorienterad programmering/C# Projekt/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj": {}
+    "/Users/simonsandstrom/ObjProg1/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj": {}
   },
   "projects": {
-    "/Users/gustaf/Library/Mobile Documents/com~apple~CloudDocs/Utbildning/Informationssystem A - Objektorienterad programmering/C# Projekt/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj": {
+    "/Users/simonsandstrom/ObjProg1/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/gustaf/Library/Mobile Documents/com~apple~CloudDocs/Utbildning/Informationssystem A - Objektorienterad programmering/C# Projekt/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj",
+        "projectUniqueName": "/Users/simonsandstrom/ObjProg1/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj",
         "projectName": "TicTacToe",
-        "projectPath": "/Users/gustaf/Library/Mobile Documents/com~apple~CloudDocs/Utbildning/Informationssystem A - Objektorienterad programmering/C# Projekt/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj",
-        "packagesPath": "/Users/gustaf/.nuget/packages/",
-        "outputPath": "/Users/gustaf/Library/Mobile Documents/com~apple~CloudDocs/Utbildning/Informationssystem A - Objektorienterad programmering/C# Projekt/Projektarbete-TICTACTOE/TicTacToe/obj/",
+        "projectPath": "/Users/simonsandstrom/ObjProg1/Projektarbete-TICTACTOE/TicTacToe/TicTacToe.csproj",
+        "packagesPath": "/Users/simonsandstrom/.nuget/packages/",
+        "outputPath": "/Users/simonsandstrom/ObjProg1/Projektarbete-TICTACTOE/TicTacToe/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/gustaf/.nuget/NuGet/NuGet.Config"
+          "/Users/simonsandstrom/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "/opt/homebrew/Cellar/dotnet/10.0.401/libexec/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/10.0.401/libexec/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
