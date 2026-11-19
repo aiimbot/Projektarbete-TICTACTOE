@@ -1,6 +1,6 @@
 class ClassicRules
 {
-    public virtual bool IsValidMove(Board board, inte cell)
+    public virtual bool IsValidMove(Board board, int cell)
     {
         return board.IsFree(cell);
     }
@@ -8,10 +8,8 @@ class ClassicRules
     {
         
     }
-    public bool IsWinner(Board board, Mark mark)
-    {
-        
-    }
+    //public bool IsWinner(Board board, Mark mark)
+    
     public bool IsDraw(Board board)
     {
         return board.IsFull();
