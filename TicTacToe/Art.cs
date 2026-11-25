@@ -39,9 +39,9 @@ public class Art
     {
         rows = new Dictionary<Mark, string[]>
         {
-            [Mark.X] = x,
-            [Mark.O] = o,
-            [Mark.Empty] = empty
+            [Mark.X] = X,
+            [Mark.O] = O,
+            [Mark.Empty] = Empty
         };
     }
 
