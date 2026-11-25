@@ -7,14 +7,15 @@ class HumanPlayer : IPlayer
         this.name = name;
         this.mark = mark;
     }
-    public int ChooseCell(Board board)
+    public void PlayTurn(Board board)
     {
         while(true)
         {
             Console.WriteLine($"{name} välj ruta 1-9");
             String? input = Console.ReadLine();
             int.TryParse(input, out int number);
-            if ( number < 1 && number > 9)
+            number -= 1;
+            if (number < 0 || number > 8)
             {
                 Console.WriteLine("Ogiltigt val, skriv ett tal mellan 1 och 9.");
                 continue;
@@ -24,7 +25,9 @@ class HumanPlayer : IPlayer
                 Console.WriteLine("Rutan är inte ledig, välj en annan.");
                 continue;
             }
-            return number - 1;
+
+            board.Place(number, mark);
+            break;
         }
     }
 }
