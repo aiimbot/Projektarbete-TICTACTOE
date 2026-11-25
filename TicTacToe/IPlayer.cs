@@ -1,4 +1,4 @@
-interface IPlayer
+public interface IPlayer
 {
-    int ChooseCell(Board board);
+    void PlayTurn(Board board);
 }
