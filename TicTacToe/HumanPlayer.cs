@@ -13,8 +13,8 @@ class HumanPlayer : IPlayer
         {
             Console.WriteLine($"{name} välj ruta 1-9");
             String? input = Console.ReadLine();
-            if (!int.TryParse(input, out int number)
-                    && number >= 1 && number <= 9)
+            int.TryParse(input, out int number);
+            if ( number < 1 && number > 9)
             {
                 Console.WriteLine("Ogiltigt val, skriv ett tal mellan 1 och 9.");
                 continue;
