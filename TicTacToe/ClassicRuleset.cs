@@ -1,4 +1,4 @@
-class ClassicRules
+class ClassicRuleset
 {
     public virtual bool IsValidMove(Board board, int cell)
     {
