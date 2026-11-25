@@ -1,4 +1,4 @@
-class Board 
+public class Board 
 {
 
 	private readonly Mark[] marks;
@@ -59,6 +59,30 @@ class Board
 		return freePositions;
 	}
 
+public string Render(Art art)
+{
+    string text = art.DrawBorder() + "\n";
+
+    for (int boardRow = 0; boardRow < 3; boardRow++)
+    {
+        for (int artRow = 0; artRow < art.CountRows(); artRow++)
+        {
+            text += "|";
+
+            for (int column = 0; column < 3; column++)
+            {
+                Mark mark = marks[boardRow * 3 + column];
+                text += art.ReadRow(mark, artRow) + "|";
+            }
+
+            text += "\n";
+        }
+
+        text += art.DrawBorder() + "\n";
+    }
+
+    return text;
+}
 
 
 	// Bygger brädet som text i tre rader med tre rutor var, där tomma rutor visas som mellanslag.
