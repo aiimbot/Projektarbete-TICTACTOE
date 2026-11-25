@@ -12,7 +12,7 @@ class HumanPlayer : IPlayer
         while(true)
         {
             Console.WriteLine($"{name} välj ruta 1-9");
-            String? input =Console.ReadLine();
+            String? input = Console.ReadLine();
             if (!int.TryParse(input, out int number)
                     && number >= 1 && number <= 9)
             {
