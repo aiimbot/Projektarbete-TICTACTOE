@@ -13,12 +13,18 @@ class HumanPlayer : IPlayer
         {
             Console.WriteLine($"{name} välj ruta 1-9");
             String? input =Console.ReadLine();
-            if (int.TryParse(input, out int number)
+            if (!int.TryParse(input, out int number)
                     && number >= 1 && number <= 9)
-                {
-                    return number;
-                }
-            Console.WriteLine("Ogiltigt val, skriv ett tal mellan 1 och 9.");
+            {
+                Console.WriteLine("Ogiltigt val, skriv ett tal mellan 1 och 9.");
+                continue;
+            }
+            if (!board.IsFree(number))
+            {
+                Console.WriteLine("Rutan är inte ledig, välj en annan.");
+                continue;
+            }
+            return number - 1;
         }
     }
 }
