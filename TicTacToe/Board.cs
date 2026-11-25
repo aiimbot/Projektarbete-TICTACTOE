@@ -11,14 +11,14 @@ public class Board
 	//Är rutan ledig?
 	public bool IsFree(int position) 
 	{
-		return marks[position] == Mark.Null;
+		return marks[position] == Mark.Empty;
 	}
 
 	//Är brädet fullt?
 	public bool IsFull() 
 	{
     	foreach (Mark mark in marks) {
-    		if (mark == Mark.Null) 
+    		if (mark == Mark.Empty) 
     		{
     			return false;
     		}
@@ -35,7 +35,7 @@ public class Board
 	//Lägg en mark i rutan
 	public void Place(int position, Mark mark)
 	{
-		if (marks[position] != Mark.Null)
+		if (marks[position] != Mark.Empty)
 		{
 			throw new InvalidOperationException("Rutan är upptagen.");
 		}
@@ -50,7 +50,7 @@ public class Board
 
 		for (int i = 0; i < marks.Length; i++)
 		{
-			if (marks[i] == Mark.Null) 
+			if (marks[i] == Mark.Empty) 
 			{
 				freePositions.Add(i);
 			}
@@ -59,33 +59,30 @@ public class Board
 		return freePositions;
 	}
 
-public string Render(Art art)
-{
-    string text = art.DrawBorder() + "\n";
-
-    for (int boardRow = 0; boardRow < 3; boardRow++)
-    {
-        for (int artRow = 0; artRow < art.CountRows(); artRow++)
-        {
-            text += "|";
-
-            for (int column = 0; column < 3; column++)
-            {
-                Mark mark = marks[boardRow * 3 + column];
-                text += art.ReadRow(mark, artRow) + "|";
-            }
-
-            text += "\n";
-        }
-
-        text += art.DrawBorder() + "\n";
-    }
-
-    return text;
-}
-
-
 	// Bygger brädet som text i tre rader med tre rutor var, där tomma rutor visas som mellanslag.
-	//public override string ToString()
+	public string Render(Art art)
+	{
+	    string text = art.DrawBorder() + "\n";
+	
+	    for (int boardRow = 0; boardRow < 3; boardRow++)
+	    {
+	        for (int artRow = 0; artRow < art.CountRows(); artRow++)
+	        {
+	            text += "|";
+	
+	            for (int column = 0; column < 3; column++)
+	            {
+	                Mark mark = marks[boardRow * 3 + column];
+	                text += art.ReadRow(mark, artRow) + "|";
+	            }
+	
+	            text += "\n";
+	        }
+	
+	        text += art.DrawBorder() + "\n";
+	    }
+	
+	    return text;
+	}
 
 }

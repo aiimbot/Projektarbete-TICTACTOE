@@ -22,7 +22,7 @@ public class Art
         @"         "
     };
 
-    private readonly string[] Null =
+    private readonly string[] Empty =
     {
         @"         ",
         @"         ",
@@ -39,9 +39,9 @@ public class Art
     {
         rows = new Dictionary<Mark, string[]>
         {
-            [Mark.X] = X,
-            [Mark.O] = O,
-            [Mark.Null] = Null
+            [Mark.X] = x,
+            [Mark.O] = o,
+            [Mark.Empty] = empty
         };
     }
 
@@ -52,7 +52,7 @@ public class Art
 
     public int CountRows()
     {
-    	return rows[Mark.Null].Length;
+    	return rows[Mark.Empty].Length;
     }
 
     public string DrawBorder()

@@ -1,6 +1,6 @@
 public enum Mark 
 {
-	Null,
+	Empty,
 	X,
 	O
 }
