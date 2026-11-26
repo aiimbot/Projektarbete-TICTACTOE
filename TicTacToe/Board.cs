@@ -2,19 +2,17 @@ public class Board
 {
 
 	private readonly Mark[] marks;
-	private readonly int width;
-	private readonly int height;
+	private readonly int side;
 
 	private readonly int[][] directions =
 	{
 		new[] { 0, 1 }, new[] { 1, 0 }, new[] { 1, 1 }, new[] { 1, -1 }
 	};
 
-	public Board(int width, int height)
+	public Board(int side)
 	{
-		this.width = width;
-		this.height = height;
-		marks = new Mark[width * height];
+		this.side = side;
+		marks = new Mark[side * side];
 	}
 
 	//Är rutan ledig?
@@ -42,10 +40,10 @@ public class Board
 			foreach (int[] step in directions)
 			{
 				int count = 0;
-				int row = start / width;
-				int column = start % width;
-				while (row < height && column >= 0 && column < width
-					&& marks[row * width + column] == mark && count < length)
+				int row = start / side;
+				int column = start % side;
+				while (row < side && column >= 0 && column < side
+					&& marks[row * side + column] == mark && count < length)
 				{
 					count++;
 					row += step[0];
@@ -96,24 +94,24 @@ public class Board
 	// Bygger brädet som text i tre rader med tre rutor var, där tomma rutor visas som mellanslag.
 	public string Render(Art art)
 	{
-	    string text = art.DrawBorder(width) + "\n";
+	    string text = art.DrawBorder(side) + "\n";
 	
-	    for (int boardRow = 0; boardRow < width; boardRow++)
+	    for (int boardRow = 0; boardRow < side; boardRow++)
 	    {
 	        for (int artRow = 0; artRow < art.CountRows(); artRow++)
 	        {
 	            text += "|";
 	
-	            for (int column = 0; column < width; column++)
+	            for (int column = 0; column < side; column++)
 	            {
-	                Mark mark = marks[boardRow * width + column];
+	                Mark mark = marks[boardRow * side + column];
 	                text += art.ReadRow(mark, artRow) + "|";
 	            }
 	
 	            text += "\n";
 	        }
 	
-	        text += art.DrawBorder(width) + "\n";
+	        text += art.DrawBorder(side) + "\n";
 	    }
 	
 	    return text;
