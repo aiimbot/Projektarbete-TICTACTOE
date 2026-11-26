@@ -30,7 +30,7 @@ public class Menu
         };
 
         int choice = prompt.AskNumber(
-            "Spelläge: 1 Klassisk, 2 Gravity: ", 1, rulesets.Length);
+            "Välj spelläge 1 (klassisk), 2 (gravity): ", 1, rulesets.Length);
         return rulesets[choice - 1];
     }
 
@@ -59,12 +59,7 @@ public class Menu
 	        "Välj svårighetsgrad: 1 (lätt), 2 (medel), 3 (svår): ", 1, 3);
 	    return levels[level - 1];
 	}
-
-	public Board ChooseBoard()
-	{
-		int size = prompt.AskNumber("Välj brädstorlek (minst 3, högst 12): ", 3, 12);
-		return new Board(size);
-	}
+	
 	public int ChooseSize()
     {
         return prompt.AskNumber("Välj brädstorlek (3-12): ", 3, 12);
