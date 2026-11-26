@@ -4,17 +4,16 @@ public class Game
     private readonly Ruleset rules;
     private readonly Display display;
     private readonly IPlayer[] players;
-    private readonly Mark[] marks = { Mark.X, Mark.O };
+    private readonly Mark[] marks;
 
-    public Game(Board board, Ruleset rules, Display display,
-        IPlayer first, IPlayer second)
+    public Game(Board board, Ruleset rules, Display display, IPlayer[] players, Mark[] marks)
     {
         this.board = board;
         this.rules = rules;
         this.display = display;
-        players = new[] { first, second };
+        this.players = players;
+        this.marks = marks;
     }
-
     public void Play()
     {
         int turn = 0;
