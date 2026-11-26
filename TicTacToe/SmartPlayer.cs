@@ -6,14 +6,14 @@ class SmartPlayer : IPlayer
 
     private readonly int[][] winningCombinations =
     {
-        new[] { 1, 2, 3 },
-        new[] { 4, 5, 6 },
-        new[] { 7, 8, 9 },
+        new[] { 0, 1, 2 },
+        new[] { 3, 4, 5 },
+        new[] { 6, 7, 8 },
+        new[] { 0, 3, 6 },
         new[] { 1, 4, 7 },
         new[] { 2, 5, 8 },
-        new[] { 3, 6, 9 },
-        new[] { 1, 5, 9 },
-        new[] { 3, 5, 7 }
+        new[] { 0, 4, 8 },
+        new[] { 2, 4, 6 }
     };
 
     public SmartPlayer(Random random, Mark mark)
@@ -39,12 +39,12 @@ class SmartPlayer : IPlayer
             return blockingMove;
         }
 
-        if (validMoves.Contains(5))
+        if (validMoves.Contains(4))
         {
-            return 5;
+            return 4;
         }
 
-        int[] corners = { 1, 3, 7, 9 };
+        int[] corners = { 0, 2, 6, 8 };
         List<int> freeCorners = new List<int>();
 
         foreach (int corner in corners)
@@ -59,7 +59,7 @@ class SmartPlayer : IPlayer
         {
             return freeCorners[random.Next(freeCorners.Count)];
         }
-        
+
         return validMoves[random.Next(validMoves.Count)];
     }
 
