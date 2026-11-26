@@ -1,12 +1,9 @@
 public class ThinkingPlayer : IPlayer
 {
     private readonly IPlayer player;
-    private readonly int delay;
-
-    public ThinkingPlayer(IPlayer player, int delay)
+    public ThinkingPlayer(IPlayer player)
     {
         this.player = player;
-        this.delay = delay;
     }
 
     public int ChooseMove(Board board, List<int> validMoves)
@@ -15,7 +12,7 @@ public class ThinkingPlayer : IPlayer
 
         for (int i = 0; i < 3; i++)
         {
-            Thread.Sleep(delay / 3);
+            Thread.Sleep(1500 / 3);
             Console.Write(".");
         }
 

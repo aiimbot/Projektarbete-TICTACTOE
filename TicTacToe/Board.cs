@@ -58,6 +58,11 @@ public class Board
 	{
 		return marks[position] == mark;
 	}
+	//Kollar om en ruta tom
+	public bool IsFree(int position)
+	{
+		return marks[position] == Mark.Empty;
+	}
 
 	//Lägg en mark i rutan
 	public void Place(int position, Mark mark)
@@ -119,4 +124,31 @@ public class Board
 		Array.Copy(marks, copy.marks, marks.Length);
 		return copy;
 	}
+
+	public List<int> ListFreeColumns()
+{
+	List<int> columns = new List<int>();
+
+	for (int column = 0; column < size; column++)
+	{
+		if (marks[column] == Mark.Empty)
+		{
+			columns.Add(column);
+		}
+	}
+
+	return columns;
+}
+
+public int FindLowestFree(int column)
+{
+	int cell = column + (size - 1) * size;
+
+	while (marks[cell] != Mark.Empty)
+	{
+		cell -= size;
+	}
+
+	return cell;
+}
 }

@@ -25,7 +25,8 @@ public class Menu
 
         Ruleset[] rulesets =
         {
-            new Ruleset(size)
+            new Ruleset(length),
+			new GravityRuleset(length)
 
         };
 
@@ -50,9 +51,9 @@ public class Menu
 	
 	    IPlayer[] levels =
 	    {
-	        new ComputerPlayer(new[] { guess }),
-	        new ComputerPlayer(new[] { block, guess }),
-	        new ComputerPlayer(new[] { win, block, guess })
+	        new ThinkingPlayer(new ComputerPlayer(new[] { guess })),
+	        new ThinkingPlayer(new ComputerPlayer(new[] { block, guess })),
+	        new ThinkingPlayer(new ComputerPlayer(new[] { win, block, guess }))
 	    };
 	
 	    int level = prompt.AskNumber(
