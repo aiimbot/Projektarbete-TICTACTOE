@@ -111,4 +111,12 @@ public class Board
 	
 		return text;
 	}
+	//Gör en riktig kopia av brädet.
+	//Det är en riktig kopia med en egen array. När LineCompletion provar ett drag på kopian påverkas därför inte det riktiga brädet.
+	public Board Copy()
+	{
+		Board copy = new Board(size);
+		Array.Copy(marks, copy.marks, marks.Length);
+		return copy;
+	}
 }
