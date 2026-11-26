@@ -10,17 +10,29 @@ public class Menu
 		this.random = random;
 	}
 
-	/*
 	public void ShowWelcome()
-	{
+    {
+        Console.Clear();
+        Console.WriteLine("=== I RAD ===");
+        Console.WriteLine("Få flest märken i rad för att vinna!");
+        Console.WriteLine();
+    }
 
-	}
+	public Ruleset ChooseRuleset(int size)
+    {
+        int length = prompt.AskNumber(
+            $"Hur många i rad för att vinna? (3-{size}): ", 3, size);
 
-	public Ruleset ChooseRuleset()
-	{
+        Ruleset[] rulesets =
+        {
+            new Ruleset(size)
 
-	}
-	*/
+        };
+
+        int choice = prompt.AskNumber(
+            "Spelläge: 1 Klassisk, 2 Gravity: ", 1, rulesets.Length);
+        return rulesets[choice - 1];
+    }
 
 	public IPlayer ChooseOpponent(Ruleset rules)
 	{
