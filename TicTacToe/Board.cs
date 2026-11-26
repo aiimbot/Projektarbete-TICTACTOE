@@ -2,16 +2,19 @@ public class Board
 {
 
 	private readonly Mark[] marks;
-	private readonly int[][] Winlines =
+	private readonly int width;
+	private readonly int height;
+
+	private readonly int[][] directions =
 	{
-		new[] { 0, 1, 2 }, new[] { 3, 4, 5 }, new[] { 6, 7, 8 },
-		new[] { 0, 3, 6 }, new[] { 1, 4, 7 }, new[] { 2, 5, 8 },
-		new[] { 0, 4, 8 }, new[] { 2, 4, 6 }
+		new[] { 0, 1 }, new[] { 1, 0 }, new[] { 1, 1 }, new[] { 1, -1 }
 	};
 
-	public Board() 
+	public Board(int width, int height)
 	{
-		marks = new Mark[9];
+		this.width = width;
+		this.height = height;
+		marks = new Mark[width * height];
 	}
 
 	//Är rutan ledig?
@@ -32,17 +35,28 @@ public class Board
     	return true;
 	}
 	//Har någon en vinstlinje?
-	public bool HasWinLine(Mark mark)
+	public bool HasLine(Mark mark, int length)
 	{
-		foreach (int[] line in Winlines)
+		for (int start = 0; start < marks.Length; start++)
 		{
-			if (marks[line[0]] == mark && marks[line[1]] == mark
-				&& marks[line[2]] == mark)
+			foreach (int[] step in directions)
 			{
-				return true;
+				int count = 0;
+				int row = start / width;
+				int column = start % width;
+				while (row < height && column >= 0 && column < width
+					&& marks[row * width + column] == mark && count < length)
+				{
+					count++;
+					row += step[0];
+					column += step[1];
+				}
+				if (count == length)
+				{
+					return true;
+				}
 			}
 		}
-
 		return false;
 	}
 
