@@ -11,4 +11,15 @@ public class Display
 	{
 		Console.Write(board.Render(art));
 	}
+	public void ShowResult(bool hasWinner, Mark mark)
+	{
+		if (hasWinner)
+		{
+			Console.WriteLine($"{mark} vann!");
+		}
+		else
+		{
+			Console.WriteLine("Oavgjort!");
+		}
+	}
 }

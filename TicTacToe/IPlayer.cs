@@ -1,4 +1,5 @@
 public interface IPlayer
 {
-    void PlayTurn(Board board);
+    int ChooseMove(Board board, List<int> validMoves);
+
 }

@@ -1,36 +1,26 @@
-class HumanPlayer : IPlayer
+public class HumanPlayer : IPlayer
 {
     private readonly string name;
-    private readonly Mark mark;
-    public HumanPlayer(string name, Mark mark)
+    public HumanPlayer(string name)
     {
         this.name = name;
-        this.mark = mark;
     }
-    public void PlayTurn(Board board)
+    public int ChooseMove(Board board, List<int> validMoves)
     {
-        while(true)
+        string options = string.Join(", ", validMoves.Select(m => m + 1));
+
+        while (true)
         {
-            Console.WriteLine($"{name} välj ruta 1-9");
-            String? input = Console.ReadLine();
+            Console.Write($"{name}, välj ({options}): ");
+            string? input = Console.ReadLine();
 
-            if (!int.TryParse(input, out int number)
-                || number < 1 || number > 9)
+            if (int.TryParse(input, out int number)
+                && validMoves.Contains(number - 1))
             {
-                Console.WriteLine("Ogiltigt val, skriv 1-9.");
-                continue;
-            }
-            
-            number -= 1;
-
-            if (!board.IsFree(number))
-            {
-                Console.WriteLine("Rutan är inte ledig, välj en annan.");
-                continue;
+                return number - 1;
             }
 
-            board.Place(number, mark);
-            break;
+            Console.WriteLine("Ogiltigt val, försök igen.");
         }
     }
 }

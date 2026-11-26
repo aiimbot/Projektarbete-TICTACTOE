@@ -2,6 +2,12 @@ public class Board
 {
 
 	private readonly Mark[] marks;
+	private readonly int[][] Winlines =
+	{
+		new[] { 0, 1, 2 }, new[] { 3, 4, 5 }, new[] { 6, 7, 8 },
+		new[] { 0, 3, 6 }, new[] { 1, 4, 7 }, new[] { 2, 5, 8 },
+		new[] { 0, 4, 8 }, new[] { 2, 4, 6 }
+	};
 
 	public Board() 
 	{
@@ -24,6 +30,20 @@ public class Board
     		}
     	}
     	return true;
+	}
+	//Har någon en vinstlinje?
+	public bool HasWinLine(Mark mark)
+	{
+		foreach (int[] line in Winlines)
+		{
+			if (marks[line[0]] == mark && marks[line[1]] == mark
+				&& marks[line[2]] == mark)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	//Innehåller rutan vad som efterfrågas?

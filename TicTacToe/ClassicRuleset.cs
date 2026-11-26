@@ -1,15 +1,20 @@
-class ClassicRuleset
+public class ClassicRuleset
 {
-    public virtual bool IsValidMove(Board board, int cell)
+    public virtual List<int> ListValidMoves(Board board)
     {
-        return board.IsFree(cell);
+        return board.ListFreePositions();
     }
-    public virtual void Place(Board board, int cell, Mark mark)
+
+    public virtual void Place(Board board, int move, Mark mark)
     {
-        
+        board.Place(move, mark);
     }
-    //public bool IsWinner(Board board, Mark mark)
-    
+
+    public bool IsWinner(Board board, Mark mark)
+    {
+        return board.HasWinLine(mark);
+    }
+
     public bool IsDraw(Board board)
     {
         return board.IsFull();

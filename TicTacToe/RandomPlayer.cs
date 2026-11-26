@@ -1,20 +1,13 @@
-class RandomPlayer : IPlayer
+public class RandomPlayer : IPlayer
 {
     private readonly Random random;
-    private readonly Mark mark;
-
-    public RandomPlayer(Random random, Mark mark)
+    public RandomPlayer(Random random)
     {
         this.random = random;
-        this.mark = mark;
     }
 
-    public void PlayTurn(Board board)
+    public int ChooseMove(Board board, List<int> validMoves)
     {
-        List<int> freePositions = board.ListFreePositions();
-
-        int index = random.Next(freePositions.Count);
-
-        board.Place(freePositions[index], mark);
+        return validMoves[random.Next(validMoves.Count)];
     }
 }
