@@ -1,7 +1,6 @@
 public class ClassicRuleset : Ruleset
 {
-    public override List<int> ListValidMoves(Board board)
-    {
-        return board.ListFreePositions();
-    }
+    public ClassicRuleset(int lineLength) : base(lineLength)
+{
+}
 }

@@ -16,4 +16,10 @@ public class Prompt
             Console.Write($"Skriv ett tal mellan {min} och {max}: ");
         }
     }
+
+    public string AskText(string text)
+	{
+    	Console.Write(text);
+    	return Console.ReadLine() ?? "";
+	}
 }
