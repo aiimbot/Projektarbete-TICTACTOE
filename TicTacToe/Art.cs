@@ -45,9 +45,18 @@ public class Art
         };
     }
 
-    public string ReadRow(Mark mark, int row)
+    public string ReadRow(Mark mark, int row, int position)
     {
-    	return rows[mark][row];
+        string[] art = rows[mark];
+
+        if (mark == Mark.Empty && row == art.Length / 2)
+        {
+            string label = (position + 1).ToString();
+            int width = art[row].Length;
+            return label.PadLeft((width + label.Length) / 2).PadRight(width);
+        }
+
+        return art[row];
     }
 
     public int CountRows()

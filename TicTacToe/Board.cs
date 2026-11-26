@@ -99,8 +99,8 @@ public class Board
 	
 				for (int column = 0; column < size; column++)
 				{
-					Mark mark = marks[boardRow * size + column];
-					text += art.ReadRow(mark, artRow) + "|";
+					int position = boardRow * size + column;
+					text += art.ReadRow(marks[position], artRow, position) + "|";
 				}
 	
 				text += "\n";
