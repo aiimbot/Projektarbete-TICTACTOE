@@ -65,4 +65,9 @@ public class Menu
 		int size = prompt.AskNumber("Välj brädstorlek (minst 3, högst 12): ", 3, 12);
 		return new Board(size);
 	}
+	public int ChooseSize()
+    {
+        return prompt.AskNumber("Välj brädstorlek (3-12): ", 3, 12);
+    }
 }
+
