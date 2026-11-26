@@ -9,7 +9,6 @@ public class RandomPlayer : IPlayer
 
     public int ChooseMove(Board board, List<int> validMoves)
     {
-        
         return validMoves[random.Next(validMoves.Count)];
     }
 }
