@@ -4,7 +4,7 @@ public class Menu
 	private readonly Prompt prompt;
 	private readonly Random random;
 
-	public Menu(Prompt prompt, Random random) 
+	public Menu(Prompt prompt, Random randomgi) 
 	{
 		this.prompt = prompt;
 		this.random = random;
