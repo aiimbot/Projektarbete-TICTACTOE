@@ -1,15 +1,25 @@
-public abstract class Ruleset
+public class Ruleset
 {
-    public abstract List<int> ListValidMoves(Board board);
+    private readonly int lineLength;
 
-    public void Place(Board board, int move, Mark mark)
+    public Ruleset(int lineLength)
+    {
+        this.lineLength = lineLength;
+    }
+
+    public virtual List<int> ListValidMoves(Board board)
+    {
+        return board.ListFreePositions();
+    }
+
+    public virtual void Place(Board board, int move, Mark mark)
     {
         board.Place(move, mark);
     }
 
     public bool IsWinner(Board board, Mark mark)
     {
-        return board.HasWinLine(mark);
+        return board.HasLine(mark, lineLength);
     }
 
     public bool IsDraw(Board board)

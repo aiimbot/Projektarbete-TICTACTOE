@@ -1,12 +1,12 @@
 public class Game
 {
     private readonly Board board;
-    private readonly ClassicRuleset rules;
+    private readonly Ruleset rules;
     private readonly Display display;
     private readonly IPlayer[] players;
     private readonly Mark[] marks = { Mark.X, Mark.O };
 
-    public Game(Board board, ClassicRuleset rules, Display display,
+    public Game(Board board, Ruleset rules, Display display,
         IPlayer first, IPlayer second)
     {
         this.board = board;

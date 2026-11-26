@@ -55,8 +55,8 @@ public class Art
     	return rows[Mark.Empty].Length;
     }
 
-    public string DrawBorder()
+    public string DrawBorder(int columns)
     {
-    	return "+---------+---------+---------+";
+        return "+" + string.Concat(Enumerable.Repeat("---------+", columns));
     }
 }

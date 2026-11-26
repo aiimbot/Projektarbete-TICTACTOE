@@ -96,24 +96,24 @@ public class Board
 	// Bygger brädet som text i tre rader med tre rutor var, där tomma rutor visas som mellanslag.
 	public string Render(Art art)
 	{
-	    string text = art.DrawBorder() + "\n";
+	    string text = art.DrawBorder(width) + "\n";
 	
-	    for (int boardRow = 0; boardRow < 3; boardRow++)
+	    for (int boardRow = 0; boardRow < width; boardRow++)
 	    {
 	        for (int artRow = 0; artRow < art.CountRows(); artRow++)
 	        {
 	            text += "|";
 	
-	            for (int column = 0; column < 3; column++)
+	            for (int column = 0; column < width; column++)
 	            {
-	                Mark mark = marks[boardRow * 3 + column];
+	                Mark mark = marks[boardRow * width + column];
 	                text += art.ReadRow(mark, artRow) + "|";
 	            }
 	
 	            text += "\n";
 	        }
 	
-	        text += art.DrawBorder() + "\n";
+	        text += art.DrawBorder(width) + "\n";
 	    }
 	
 	    return text;
