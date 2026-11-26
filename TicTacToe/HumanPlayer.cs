@@ -5,6 +5,7 @@ public class HumanPlayer : IPlayer
     {
         this.name = name;
     }
+    
     public int ChooseMove(Board board, List<int> validMoves)
     {
         string options = string.Join(", ", validMoves.Select(m => m + 1));

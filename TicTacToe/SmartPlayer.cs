@@ -1,4 +1,4 @@
-class SmartPlayer : IPlayer
+public class SmartPlayer : IPlayer
 {
     private readonly Mark mark;
     private readonly Mark opponent;

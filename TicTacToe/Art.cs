@@ -1,6 +1,6 @@
 public class Art
 {
-    private readonly string[] X =
+    private readonly string[] x =
     {
         @"         ",
         @"  \   /  ",
@@ -11,7 +11,7 @@ public class Art
         @"         "
     };
 
-    private readonly string[] O =
+    private readonly string[] o =
     {
         @"         ",
         @"   ---   ",
@@ -22,7 +22,7 @@ public class Art
         @"         "
     };
 
-    private readonly string[] Empty =
+    private readonly string[] empty =
     {
         @"         ",
         @"         ",
@@ -39,9 +39,9 @@ public class Art
     {
         rows = new Dictionary<Mark, string[]>
         {
-            [Mark.X] = X,
-            [Mark.O] = O,
-            [Mark.Empty] = Empty
+            [Mark.X] = x,
+            [Mark.O] = o,
+            [Mark.Empty] = empty
         };
     }
 

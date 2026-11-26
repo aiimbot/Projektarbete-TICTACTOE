@@ -1,37 +1,32 @@
 public class Board 
 {
-
 	private readonly Mark[] marks;
-	private readonly int side;
+	private readonly int size;
 
 	private readonly int[][] directions =
 	{
 		new[] { 0, 1 }, new[] { 1, 0 }, new[] { 1, 1 }, new[] { 1, -1 }
 	};
 
-	public Board(int side)
+	public Board(int size)
 	{
-		this.side = side;
-		marks = new Mark[side * side];
-	}
-
-	//Är rutan ledig?
-	public bool IsFree(int position) 
-	{
-		return marks[position] == Mark.Empty;
+		this.size = size;
+		marks = new Mark[size * size];
 	}
 
 	//Är brädet fullt?
 	public bool IsFull() 
 	{
-    	foreach (Mark mark in marks) {
-    		if (mark == Mark.Empty) 
-    		{
-    			return false;
-    		}
-    	}
-    	return true;
+		foreach (Mark mark in marks)
+		{
+			if (mark == Mark.Empty) 
+			{
+				return false;
+			}
+		}
+		return true;
 	}
+
 	//Har någon en vinstlinje?
 	public bool HasLine(Mark mark, int length)
 	{
@@ -40,10 +35,10 @@ public class Board
 			foreach (int[] step in directions)
 			{
 				int count = 0;
-				int row = start / side;
-				int column = start % side;
-				while (row < side && column >= 0 && column < side
-					&& marks[row * side + column] == mark && count < length)
+				int row = start / size;
+				int column = start % size;
+				while (row < size && column >= 0 && column < size
+					&& marks[row * size + column] == mark && count < length)
 				{
 					count++;
 					row += step[0];
@@ -91,30 +86,29 @@ public class Board
 		return freePositions;
 	}
 
-	// Bygger brädet som text i tre rader med tre rutor var, där tomma rutor visas som mellanslag.
+	//Bygger brädet som text med en figur per ruta
 	public string Render(Art art)
 	{
-	    string text = art.DrawBorder(side) + "\n";
+		string text = art.DrawBorder(size) + "\n";
 	
-	    for (int boardRow = 0; boardRow < side; boardRow++)
-	    {
-	        for (int artRow = 0; artRow < art.CountRows(); artRow++)
-	        {
-	            text += "|";
+		for (int boardRow = 0; boardRow < size; boardRow++)
+		{
+			for (int artRow = 0; artRow < art.CountRows(); artRow++)
+			{
+				text += "|";
 	
-	            for (int column = 0; column < side; column++)
-	            {
-	                Mark mark = marks[boardRow * side + column];
-	                text += art.ReadRow(mark, artRow) + "|";
-	            }
+				for (int column = 0; column < size; column++)
+				{
+					Mark mark = marks[boardRow * size + column];
+					text += art.ReadRow(mark, artRow) + "|";
+				}
 	
-	            text += "\n";
-	        }
+				text += "\n";
+			}
 	
-	        text += art.DrawBorder(side) + "\n";
-	    }
+			text += art.DrawBorder(size) + "\n";
+		}
 	
-	    return text;
+		return text;
 	}
-
 }
