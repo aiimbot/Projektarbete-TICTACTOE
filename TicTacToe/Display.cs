@@ -9,6 +9,7 @@ public class Display
 
 	public void DrawBoard(Board board)
 	{
+		Console.Clear();
 		Console.Write(board.Render(art));
 	}
 	
