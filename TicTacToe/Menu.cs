@@ -56,12 +56,20 @@ public class Menu
 			new ComputerPlayer(new[] { block, guess }),
 			new ComputerPlayer(new[] { win, block, guess })
 		};
-		return new ThinkingPlayer(computers[choice - 2]);
+		IPlayer computer = computers[choice - 2];
+		int pause = prompt.AskNumber("Ska datorn ta tänkpaus? 1 (ja), 2 (nej): ", 1, 2);
+		return pause == 1 ? new ThinkingPlayer(computer) : computer;
 	}
 	
 	public int ChooseSize()
     {
         return prompt.AskNumber("Välj brädstorlek (3-12): ", 3, 12);
     }
+
+	public bool ChooseThinking()
+	{
+    	int choice = prompt.AskNumber("Ska datorn ta tänkpaus? 1 (ja), 2 (nej): ", 1, 2);
+    	return choice == 1;
+	}
 }
 
