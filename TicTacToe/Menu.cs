@@ -1,6 +1,5 @@
 public class Menu
 {
-
     private readonly Prompt prompt;
     private readonly Random random;
 
@@ -40,11 +39,13 @@ public class Menu
     {
         int choice = prompt.AskNumber($"Spelare {own}: 1 (människa), "
             + "2 (dator lätt), 3 (dator medel), 4 (dator svår): ", 1, 4);
+
         if (choice == 1)
         {
             string name = prompt.AskText($"Namn på spelare {own}: ");
             return new HumanPlayer(name, prompt);
         }
+
         IStrategy win = new LineCompletion(rules, own);
         IStrategy block = new LineCompletion(rules, other);
         IStrategy guess = new RandomChoice(random);
@@ -54,6 +55,7 @@ public class Menu
             new ComputerPlayer(new[] { block, guess }),
             new ComputerPlayer(new[] { win, block, guess })
         };
+
         IPlayer computer = computers[choice - 2];
         int pause = prompt.AskNumber("Ska datorn ta tänkpaus? 1 (ja), 2 (nej): ", 1, 2);
         return pause == 1 ? new ThinkingPlayer(computer) : computer;

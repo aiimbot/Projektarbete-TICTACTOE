@@ -15,7 +15,7 @@ public class Board
         marks = new Mark[size * size];
     }
 
-    //Är brädet fullt?
+    // Är brädet fullt?
     public bool IsFull()
     {
         foreach (Mark mark in marks)
@@ -28,7 +28,7 @@ public class Board
         return true;
     }
 
-    //Har någon en vinstlinje?
+    // Har någon en vinstlinje?
     public bool HasLine(Mark mark, int length)
     {
         for (int start = 0; start < marks.Length; start++)
@@ -54,7 +54,7 @@ public class Board
         return false;
     }
 
-    //Lägg en mark i rutan
+    // Lägg en mark i rutan
     public void Place(int position, Mark mark)
     {
         if (marks[position] != Mark.Empty)
@@ -66,7 +66,7 @@ public class Board
         history.Add(position);
     }
 
-    //Lista lediga rutor
+    // Lista lediga rutor
     public List<int> ListFreePositions()
     {
         List<int> freePositions = new List<int>();
@@ -82,7 +82,7 @@ public class Board
         return freePositions;
     }
 
-    //Bygger brädet som text med en figur per ruta
+    // Bygger brädet som text med en figur per ruta
     public string Render(Art art)
     {
         string text = art.DrawBorder(size) + "\n";
@@ -108,8 +108,8 @@ public class Board
         return text;
     }
 
-    //Gör en riktig kopia av brädet.
-    //Det är en riktig kopia med en egen array. När LineCompletion provar ett drag på kopian påverkas därför inte det riktiga brädet.
+    // Gör en riktig kopia av brädet.
+    // Det är en riktig kopia med en egen array. När LineCompletion provar ett drag på kopian påverkas därför inte det riktiga brädet.
     public Board Copy()
     {
         Board copy = new Board(size);
@@ -118,7 +118,7 @@ public class Board
         return copy;
     }
 
-    //Lista över lediga kolumner.
+    // Lista över lediga kolumner.
     public List<int> ListFreeColumns()
     {
         List<int> columns = new List<int>();
@@ -134,7 +134,7 @@ public class Board
         return columns;
     }
 
-    //Hittar ledig ruta så långt ner i columnen som möjligt.
+    // Hittar ledig ruta så långt ner i columnen som möjligt.
     public int FindLowestFree(int column)
     {
         int cell = column + (size - 1) * size;
@@ -147,13 +147,13 @@ public class Board
         return cell;
     }
 
-    //Räknar märken.
+    // Räknar märken.
     public int CountMarks(Mark mark)
     {
         return marks.Count(m => m == mark);
     }
 
-    //Tar bort det äldsta räknade märket.
+    // Tar bort det äldsta räknade märket.
     public void RemoveOldest(Mark mark)
     {
         foreach (int position in history)

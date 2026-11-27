@@ -1,6 +1,7 @@
 public class VanishingRuleset : Ruleset
 {
     private readonly int maxMarks;
+    
     public VanishingRuleset(int lineLength, int maxMarks) : base(lineLength)
     {
         this.maxMarks = maxMarks;
