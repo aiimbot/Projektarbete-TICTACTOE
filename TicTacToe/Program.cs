@@ -10,7 +10,8 @@ IPlayer[] players =
     menu.ChoosePlayer(rules, Mark.X, Mark.O),
     menu.ChoosePlayer(rules, Mark.O, Mark.X)
 };
+TurnOrder turnorder = new TurnOrder(players,
+    new[] { Mark.X, Mark.O }, random);
 
-Game game = new Game(new Board(size), rules, display, players,
-    new[] { Mark.X, Mark.O });
+Game game = new Game(new Board(size), rules, display, turnorder);
 game.Play();

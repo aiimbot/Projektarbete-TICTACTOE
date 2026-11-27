@@ -3,32 +3,25 @@ public class Game
     private readonly Board board;
     private readonly Ruleset rules;
     private readonly Display display;
-    private readonly IPlayer[] players;
-    private readonly Mark[] marks;
+    private readonly TurnOrder turnorder;
 
     public Game(Board board, Ruleset rules, Display display,
-        IPlayer[] players, Mark[] marks)
+        TurnOrder turnorder)
     {
         this.board = board;
         this.rules = rules;
         this.display = display;
-        this.players = players;
-        this.marks = marks;
+        this.turnorder = turnorder;
     }
 
     public void Play()
     {
-        int turn = 0;
         Mark mark;
 
         do
         {
             display.DrawBoard(board);
-            mark = marks[turn % marks.Length];
-            List<int> moves = rules.ListValidMoves(board);
-            int move = players[turn % players.Length].ChooseMove(board, moves);
-            rules.Place(board, move, mark);
-            turn++;
+            mark = turnorder.PlayTurn(board, rules);
         }
         while (!rules.IsWinner(board, mark) && !rules.IsDraw(board));
 
