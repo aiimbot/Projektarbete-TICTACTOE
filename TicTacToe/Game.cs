@@ -6,7 +6,8 @@ public class Game
     private readonly IPlayer[] players;
     private readonly Mark[] marks;
 
-    public Game(Board board, Ruleset rules, Display display, IPlayer[] players, Mark[] marks)
+    public Game(Board board, Ruleset rules, Display display,
+        IPlayer[] players, Mark[] marks)
     {
         this.board = board;
         this.rules = rules;
@@ -14,6 +15,7 @@ public class Game
         this.players = players;
         this.marks = marks;
     }
+
     public void Play()
     {
         int turn = 0;
@@ -22,9 +24,9 @@ public class Game
         do
         {
             display.DrawBoard(board);
-            mark = marks[turn % 2];
+            mark = marks[turn % marks.Length];
             List<int> moves = rules.ListValidMoves(board);
-            int move = players[turn % 2].ChooseMove(board, moves);
+            int move = players[turn % players.Length].ChooseMove(board, moves);
             rules.Place(board, move, mark);
             turn++;
         }

@@ -26,12 +26,15 @@ public class Menu
         Ruleset[] rulesets =
         {
             new Ruleset(length),
-			new GravityRuleset(length)
+			new GravityRuleset(length),
+			//VanishingRuleset: length är hur många i rad för vinst, 
+			//length är även hur många märken som får finnas samtidigt.
+			new VanishingRuleset(length, length)
 
         };
 
         int choice = prompt.AskNumber(
-            "Välj spelläge 1 (klassisk), 2 (gravity): ", 1, rulesets.Length);
+            "Välj spelläge 1 (klassisk), 2 (gravity), 3 (vanishing): ", 1, rulesets.Length);
         return rulesets[choice - 1];
     }
 

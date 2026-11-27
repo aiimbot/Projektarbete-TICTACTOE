@@ -2,6 +2,7 @@ public class Board
 {
 	private readonly Mark[] marks;
 	private readonly int size;
+	private readonly List<int> history = new List<int>();
 
 	private readonly int[][] directions =
 	{
@@ -73,6 +74,7 @@ public class Board
 		}
 
 		marks[position] = mark;
+		history.Add(position);
 	}
 
 	//Lista lediga rutor
@@ -122,33 +124,52 @@ public class Board
 	{
 		Board copy = new Board(size);
 		Array.Copy(marks, copy.marks, marks.Length);
+		copy.history.AddRange(history);
 		return copy;
 	}
-
+	//Lista över lediga columner.
 	public List<int> ListFreeColumns()
-{
-	List<int> columns = new List<int>();
-
-	for (int column = 0; column < size; column++)
 	{
-		if (marks[column] == Mark.Empty)
+		List<int> columns = new List<int>();
+
+		for (int column = 0; column < size; column++)
 		{
-			columns.Add(column);
+			if (marks[column] == Mark.Empty)
+			{
+				columns.Add(column);
+			}
+		}
+
+		return columns;
+	}
+	//Hittar ledig ruta så långt ner i columnen som möjligt.
+	public int FindLowestFree(int column)
+	{
+		int cell = column + (size - 1) * size;
+
+		while (marks[cell] != Mark.Empty)
+		{
+			cell -= size;
+		}
+
+		return cell;
+	}
+	//Räknar märken.
+	public int CountMarks(Mark mark)
+	{
+		return marks.Count(m => m == mark);
+	}
+	//Tar bort det äldsta räknade märket.
+	public void RemoveOldest(Mark mark)
+	{
+		foreach (int position in history)
+		{
+			if (marks[position] == mark)
+			{
+				marks[position] = Mark.Empty;
+				history.Remove(position);
+				return;
+			}
 		}
 	}
-
-	return columns;
-}
-
-public int FindLowestFree(int column)
-{
-	int cell = column + (size - 1) * size;
-
-	while (marks[cell] != Mark.Empty)
-	{
-		cell -= size;
-	}
-
-	return cell;
-}
 }
