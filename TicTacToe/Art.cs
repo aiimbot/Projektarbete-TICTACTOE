@@ -61,7 +61,7 @@ public class Art
 
     public int CountRows()
     {
-    	return rows[Mark.Empty].Length;
+        return rows[Mark.Empty].Length;
     }
 
     public string DrawBorder(int columns)

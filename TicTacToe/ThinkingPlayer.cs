@@ -1,6 +1,9 @@
 public class ThinkingPlayer : IPlayer
 {
     private readonly IPlayer player;
+    private const int Dots = 3;
+    private const int PauseMilliseconds = 500;
+
     public ThinkingPlayer(IPlayer player)
     {
         this.player = player;
@@ -10,9 +13,9 @@ public class ThinkingPlayer : IPlayer
     {
         Console.Write("Datorn tänker");
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < Dots; i++)
         {
-            Thread.Sleep(1500 / 3);
+            Thread.Sleep(PauseMilliseconds);
             Console.Write(".");
         }
 

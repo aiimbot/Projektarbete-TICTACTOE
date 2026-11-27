@@ -2,7 +2,7 @@ public class Prompt
 {
     public int AskNumber(string text, int min, int max)
     {
-    	Console.Write(text);
+        Console.Write(text);
         while (true)
         {
             string? input = Console.ReadLine();
@@ -18,8 +18,8 @@ public class Prompt
     }
 
     public string AskText(string text)
-	{
-    	Console.Write(text);
-    	return Console.ReadLine() ?? "";
-	}
+    {
+        Console.Write(text);
+        return Console.ReadLine() ?? "";
+    }
 }

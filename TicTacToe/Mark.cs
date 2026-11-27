@@ -1,6 +1,6 @@
-public enum Mark 
+public enum Mark
 {
-	Empty,
-	X,
-	O
+    Empty,
+    X,
+    O
 }
