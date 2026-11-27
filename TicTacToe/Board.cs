@@ -85,24 +85,23 @@ public class Board
 	// Bygger brädet som text med en figur per ruta
 	public string Render(Art art)
 	{
-		string text = art.DrawBorder(size) + "\n";
-
+		string text = art.DrawBorder(size, 0) + "\n";
 		for (int boardRow = 0; boardRow < size; boardRow++)
 		{
 			for (int artRow = 0; artRow < art.CountRows(); artRow++)
 			{
-				text += "|";
+				text += "│";
 
 				for (int column = 0; column < size; column++)
 				{
 					int position = boardRow * size + column;
-					text += art.ReadRow(marks[position], artRow, position) + "|";
+					text += art.ReadRow(marks[position], artRow, position) + "│";
 				}
 
 				text += "\n";
 			}
 
-			text += art.DrawBorder(size) + "\n";
+			text += art.DrawBorder(size, boardRow + 1) + "\n";
 		}
 
 		return text;
