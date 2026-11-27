@@ -38,30 +38,25 @@ public class Menu
         return rulesets[choice - 1];
     }
 
-	public IPlayer ChooseOpponent(Ruleset rules)
+	public IPlayer ChoosePlayer(Ruleset rules, Mark own, Mark other)
 	{
-	    int kind = prompt.AskNumber(
-	        "Välj motståndare: 1 (människa), 2 (dator): ", 1, 2);
-	
-	    if (kind == 1)
-	    {
-	        return new HumanPlayer(prompt.AskText("Namn på spelare 2: "));
-	    }
-	
-	    IStrategy win = new LineCompletion(rules, Mark.O);
-	    IStrategy block = new LineCompletion(rules, Mark.X);
-	    IStrategy guess = new RandomChoice(random);
-	
-	    IPlayer[] levels =
-	    {
-	        new ThinkingPlayer(new ComputerPlayer(new[] { guess })),
-	        new ThinkingPlayer(new ComputerPlayer(new[] { block, guess })),
-	        new ThinkingPlayer(new ComputerPlayer(new[] { win, block, guess }))
-	    };
-	
-	    int level = prompt.AskNumber(
-	        "Välj svårighetsgrad: 1 (lätt), 2 (medel), 3 (svår): ", 1, 3);
-	    return levels[level - 1];
+		int choice = prompt.AskNumber($"Spelare {own}: 1 (människa), "
+			+ "2 (dator lätt), 3 (dator medel), 4 (dator svår): ", 1, 4);
+		if (choice == 1)
+		{
+			string name = prompt.AskText($"Namn på spelare {own}: ");
+			return new HumanPlayer(name);
+		}
+		IStrategy win = new LineCompletion(rules, own);
+		IStrategy block = new LineCompletion(rules, other);
+		IStrategy guess = new RandomChoice(random);
+		IPlayer[] computers =
+		{
+			new ComputerPlayer(new[] { guess }),
+			new ComputerPlayer(new[] { block, guess }),
+			new ComputerPlayer(new[] { win, block, guess })
+		};
+		return new ThinkingPlayer(computers[choice - 2]);
 	}
 	
 	public int ChooseSize()

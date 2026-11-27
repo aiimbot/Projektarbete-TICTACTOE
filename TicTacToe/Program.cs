@@ -5,9 +5,12 @@ Display display = new Display(new Art());
 menu.ShowWelcome();
 int size = menu.ChooseSize();
 Ruleset rules = menu.ChooseRuleset(size);
-IPlayer opponent = menu.ChooseOpponent(rules);
+IPlayer[] players =
+{
+    menu.ChoosePlayer(rules, Mark.X, Mark.O),
+    menu.ChoosePlayer(rules, Mark.O, Mark.X)
+};
 
-Game game = new Game(new Board(size), rules, display,
-    new[] { new HumanPlayer("Spelare 1"), opponent },
+Game game = new Game(new Board(size), rules, display, players,
     new[] { Mark.X, Mark.O });
 game.Play();
