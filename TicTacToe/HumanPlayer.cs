@@ -16,9 +16,12 @@ public class HumanPlayer : IPlayer
         string text = $"{name}, välj ({options}): ";
         int move;
 
+        int min = validMoves.Min() + 1;
+        int max = validMoves.Max() + 1;
+
         do
         {
-            move = prompt.AskNumber(text, validMoves.Min() + 1, validMoves.Max() + 1) - 1;
+            move = prompt.AskNumber(text, min, max) - 1;
         }
         while (!validMoves.Contains(move));
 

@@ -16,9 +16,8 @@ public class Game
         this.turnorder = turnorder;
     }
 
-    // Subtypspolymorfism: Game vet om att den har en TurnOrder
-    // men inte vad TurnOrdern är
-    // TurnOrdern har i sin tur två IPlayer
+    // Beroendeinjektion: regelset och turordning injiceras, så nya
+    // lägen och spelare kan läggas till utan att ändra Game
     public void Play()
     {
         Mark mark;

@@ -5,7 +5,7 @@ public class GravityRuleset : Ruleset
     {
     }
 
-    // Arv: skriver över det från basklassen, giltiga drag är kolumner i stället för rutor
+    // Arv: skriver över, giltiga drag är kolumner i stället för rutor.
     public override List<int> ListValidMoves(Board board)
     {
         return board.ListFreeColumns();
