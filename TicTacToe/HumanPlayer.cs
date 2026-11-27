@@ -9,6 +9,7 @@ public class HumanPlayer : IPlayer
         this.prompt = prompt;
     }
 
+    // Subtypspolymorfism: väljer drag via inmatning från tangentbordet
     public int ChooseMove(Board board, List<int> validMoves)
     {
         string options = string.Join(", ", validMoves.Select(m => m + 1));

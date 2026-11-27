@@ -4,11 +4,13 @@ public class ThinkingPlayer : IPlayer
     private const int Dots = 3;
     private const int PauseMilliseconds = 500;
 
+    // Beroendeinjektion: lägger en fördröjning runt valfri IPlayer
     public ThinkingPlayer(IPlayer player)
     {
         this.player = player;
     }
 
+    // Subtypspolymorfism: väntar, sedan väljer den inre spelaren drag
     public int ChooseMove(Board board, List<int> validMoves)
     {
         Console.Write("Datorn tänker");

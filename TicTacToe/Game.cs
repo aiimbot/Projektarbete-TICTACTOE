@@ -5,6 +5,8 @@ public class Game
     private readonly Display display;
     private readonly TurnOrder turnorder;
 
+    // Beroendeinjektion: regelset och spelare injiceras, så nya lägen
+    // och motståndare kan läggas till utan att ändra Game
     public Game(Board board, Ruleset rules, Display display,
         TurnOrder turnorder)
     {
@@ -14,6 +16,9 @@ public class Game
         this.turnorder = turnorder;
     }
 
+    // Subtypspolymorfism: Game vet om att den har en TurnOrder
+    // men inte vad TurnOrdern är
+    // TurnOrdern har i sin tur två IPlayer
     public void Play()
     {
         Mark mark;
